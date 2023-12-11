@@ -7,13 +7,10 @@ interface ITemplate {
 }
 
 export const templates: ITemplate[] = [
-  { label: "Flowchart", value: TemplateEnum.FLOWCHART },
-  { label: "Mindmap", value: TemplateEnum.MINDMAP },
-  { label: "Timeline", value: TemplateEnum.TIMELINE },
-  { label: "User Journey", value: TemplateEnum.USERJOURNEY },
-  { label: "Entity Relationship", value: TemplateEnum.ENTITYRELATIONSHIP },
-  { label: "Sequence Diagram", value: TemplateEnum.SEQUENCE },
-  { label: "State Diagram", value: TemplateEnum.STATE },
+
+  { label: "AI Mindmap", value: TemplateEnum.MINDMAP },
+  { label: "Your Agents", value: TemplateEnum.USERJOURNEY },
+,
   // { label: "Class Diagram", value: TemplateEnum.CLASS }, // FIXME: syntax mistake is pretty common for this
 ];
 

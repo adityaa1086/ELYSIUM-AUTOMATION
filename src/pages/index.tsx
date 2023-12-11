@@ -28,15 +28,15 @@ const Index = () => {
         input,
         selectedTemplate,
       });
-
+    
       if (res.data.text) {
         setChart(res.data.text);
       } else {
-        setError("Sorry! a small issue occurred");
+        setError("Encourage your Agent! Press the button again!");
       }
     } catch (e) {
       console.log(e);
-      setError("Sorry! a small issue occurred");
+      setError("Encourage your Agent! Press the button again!");
     } finally {
       setLoading(false);
     }
@@ -74,7 +74,7 @@ const Index = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               type="text"
-              placeholder="What the flowchart is about"
+              placeholder="Ex. email marketing"
               autoFocus="on"
             />
             <button

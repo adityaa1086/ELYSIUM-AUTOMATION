@@ -11,7 +11,7 @@ export const generate = async ({ input, selectedTemplate }) => {
     const model = new OpenAI({ temperature: 0.9 });
 
     const template =
-      "{syntax} - {instructions} learn from syntax above and write {template} in mermaid syntax about {input}?";
+      "{syntax} - {instructions} learn from syntax above and write {template} in mermaid syntax about team structure for {input}?";
     const prompt = new PromptTemplate({
       template,
       inputVariables: ["template", "input", "syntax", "instructions"],
@@ -42,3 +42,4 @@ export const generate = async ({ input, selectedTemplate }) => {
     throw e;
   }
 };
+
