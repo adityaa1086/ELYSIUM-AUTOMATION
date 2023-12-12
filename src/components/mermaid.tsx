@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from "react";
 import mermaid from "mermaid";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import { useRef } from 'react';
 
 mermaid.initialize({
   startOnLoad: true,
@@ -19,10 +20,30 @@ interface IMermaid {
 }
 
 export const Mermaid: FC<IMermaid> = ({ chart, name }) => {
-  useEffect(() => {
-    if (chart) mermaid.contentLoaded();
-  }, [chart]);
+  const renderInProgress = useRef(false);
 
+  useEffect(() => {
+    if (chart && !renderInProgress.current) {
+      renderInProgress.current = true;
+      try {
+        if (mermaid) {
+          mermaid.initialize({
+            startOnLoad: true,
+            theme: "dark",
+            securityLevel: "loose",
+            themeCSS: `
+            .
+            `,
+            fontFamily: "Fira Code",
+          });
+          mermaid.contentLoaded();
+        }
+      } catch (e) {
+        console.error('Failed to render Mermaid chart:', e);
+        alert('Encourage your Agent! Press the button again!');
+      }
+    }
+  }, [chart]);
   const exportSvg = async () => {
     const svgData = await mermaid.render("text1", chart);
 

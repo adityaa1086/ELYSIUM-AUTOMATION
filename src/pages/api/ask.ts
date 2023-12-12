@@ -22,18 +22,22 @@ export default async function handler(
 
   try {
     const ans = await generate({ input, selectedTemplate });
-
+  
+    console.log('Generated chart string:', ans.text);  // Add this line
+  
     // TODO: implement langchain parsed answer
     const text = ans.text
       .replaceAll("```", "")
       .replaceAll(`"`, `'`)
       .replaceAll(`end[End]`, `ends[End]`)
       .replace("mermaid", "");
-
+  
+    console.log('Cleaned up chart string:', text);  // Add this line
+  
     return res.status(200).json({ text });
   } catch (e) {
-    throw e;
-
+    
+  
     return res.status(400).json(e);
   }
 }
